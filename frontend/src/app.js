@@ -8,13 +8,13 @@ function App() {
     const [text, setText] = useState("");
 
     useEffect(() => {
-        fetch('http://20.3.25.220:5000/todos')
+        fetch('http://vaideeshtest.com:backend/todos')
             .then(res => res.json())
             .then(data => setTodos(data));
     }, []);
 
     const addTodo = () => {
-        fetch('http://20.3.25.220:5000/todos', {  // Ensure port 5000 is specified
+        fetch('http://vaideeshtest.com:backend/todos', {  // Ensure port 5000 is specified
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text })

@@ -16,7 +16,7 @@ app.use(cors());  // Enables CORS for all routes by default
  //   .then(() => console.log("MongoDB connected"))
  //   .catch((error) => console.error("MongoDB connection error:", error));
 
-mongoose.connect('mongodb://20.3.26.114:27017/todos_database', {
+mongoose.connect('mongodb://mongodb-service:27017/todos_database', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });

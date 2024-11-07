@@ -3,28 +3,33 @@ import React, { useState, useEffect } from 'react';
 import TodoList from './components/TodoList';
 import './app.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://vaideeshtest.com:5000';
+
 function App() {
     const [todos, setTodos] = useState([]);
     const [text, setText] = useState("");
 
     useEffect(() => {
-        fetch('http://vaideeshtest.com:backend/todos')
+        fetch(`${API_BASE_URL}/todos`)
             .then(res => res.json())
-            .then(data => setTodos(data));
+            .then(data => setTodos(data))
+            .catch(console.error);
     }, []);
 
     const addTodo = () => {
-        fetch('http://vaideeshtest.com:backend/todos', {  // Ensure port 5000 is specified
+        fetch(`${API_BASE_URL}/todos`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text })
-        }).then(res => res.json())
-          .then(newTodo => setTodos([...todos, newTodo]));
+        })
+        .then(res => res.json())
+        .then(newTodo => setTodos([...todos, newTodo]))
+        .catch(console.error);
         setText("");
     };
 
     return (
-        <div className="app">
+        <div className="container">
             <h1>To-Do List</h1>
             <input
                 type="text"

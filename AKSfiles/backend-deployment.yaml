@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: vaideesh30/mytodolistappaks:backend-1.10 # Replace with your image
+        image: vaideesh30/mytodolistappaks:backend-1.14 # Replace with your image
         ports:
         - containerPort: 5000
         env:
